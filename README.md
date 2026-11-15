@@ -1,7 +1,7 @@
 # star-kernel-finaisu
 > 小米 11 Ultra（star / SM8350）5.4 非 GKI 内核，内置 [FinaSU](https://github.com/LyraVoid/FinaSU)。
 >
-> 整套构建与移植修法来自同 SoC 的姊妹仓 [venus-kernel-finaisu](https://github.com/cvbyisme/venus-kernel-finaisu)（小米 11），换了设备代号与 defconfig 后**首次构建即实机一次开机**。
+> 整套构建与移植修法来自同 SoC 的姊妹仓 [venus-kernel-finaisu](https://github.com/C-L-Org/venus-kernel-finaisu)（小米 11），换了设备代号与 defconfig 后**首次构建即实机一次开机**。
 >
 > 一切改动都来自公开上游，大肥鱼参与了搭建、排错与文档撰写。
 >
@@ -14,7 +14,7 @@
 |---|---|
 | 机型 | Xiaomi 11 Ultra（star / M2102K1C） |
 | SoC | Snapdragon 888 / SM8350 |
-| 内核基线 | Linux 5.4.302（`cvbyisme/android_kernel_xiaomi_sm8350_miyume`，与 venus 同一棵树） |
+| 内核基线 | Linux 5.4.302（`C-L-Org/android_kernel_xiaomi_sm8350_miyume`，与 venus 同一棵树） |
 | defconfig | `arch/arm64/configs/star_defconfig` |
 | 工具链 | ZyCromerZ Clang 14.0.6 |
 | 内核类型 | **非 GKI**，vendor 树 |
@@ -226,7 +226,7 @@ Linux version 5.4.210-qgki-g71d7658432ee (runner@fv-az...) (clang version ...) #
 刷完重启后建议先跑一遍自检，确认内核真的活了，而不是只看能不能开机：
 ```sh
 curl -sL -o /sdcard/Download/star-selftest.sh \
-  https://raw.githubusercontent.com/cvbyisme/star-kernel-finaisu/main/scripts/star-selftest.sh
+  https://raw.githubusercontent.com/C-L-Org/star-kernel-finaisu/main/scripts/star-selftest.sh
 su -c 'sh /sdcard/Download/star-selftest.sh'
 ```
 输出一张 `PASS / WARN / FAIL / SKIP` 汇总表，详细报告落在 `/sdcard/Download/star-selftest-<时间>.txt`。检查项：
@@ -251,7 +251,7 @@ su -c 'sh /sdcard/Download/star-selftest.sh'
 
 | Tag | 内容 |
 |---|---|
-| **[`star-test-1`](https://github.com/cvbyisme/star-kernel-finaisu/releases/tag/star-test-1)** | 首个构建（2026-11-07）：FinaSU v1.5.0 + SUSFS（v2.3.0 协议对齐）+ preflight v2 + 功耗调优 + 不内嵌 ksud。**实机一次开机成功**（star），其余功能项仍在验证中 |
+| **[`star-test-1`](https://github.com/C-L-Org/star-kernel-finaisu/releases/tag/star-test-1)** | 首个构建（2026-11-07）：FinaSU v1.5.0 + SUSFS（v2.3.0 协议对齐）+ preflight v2 + 功耗调优 + 不内嵌 ksud。**实机一次开机成功**（star），其余功能项仍在验证中 |
 | `star-test-<n>` | 主线测试构建，跟踪最新改动 |
 
 包名格式 `star-FinaSU-<日期>-run<n>.zip`，首包 24,238,874 B。
@@ -338,7 +338,7 @@ LICENSE                许可证
 - [LyraVoid/FinaSU](https://github.com/LyraVoid/FinaSU) —— root 方案本体
 - [MiYume0721/android_kernel_xiaomi_sm8350_miyume](https://github.com/MiYume0721/android_kernel_xiaomi_sm8350_miyume) —— 内核基线（同一棵树同时含 `venus_defconfig` 与 `star_defconfig`）
 - [osm0sis/AnyKernel3](https://github.com/osm0sis/AnyKernel3) —— 刷机包模板
-- [cvbyisme/venus-kernel-finaisu](https://github.com/cvbyisme/venus-kernel-finaisu) —— 同平台姊妹仓，本仓的全部修法来源
+- [C-L-Org/venus-kernel-finaisu](https://github.com/C-L-Org/venus-kernel-finaisu) —— 同平台姊妹仓，本仓的全部修法来源
 
 ---
 ## License
